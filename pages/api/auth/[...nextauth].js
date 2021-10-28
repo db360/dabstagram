@@ -14,4 +14,17 @@ export default NextAuth({
   pages: {
     signIn: "/auth/signin",
   },
+  callbacks: {
+    // Enhance callbacks from google response
+    async session({ session, token, user }) {
+
+      session.user.username = session.user.name // Junta el nombre en minusculas
+        .split("")
+        .join("")
+        .toLocaleLowerCase();
+
+      session.user.uid = token.sub //google user id that comes back
+      return session;
+    },
+  },
 });
