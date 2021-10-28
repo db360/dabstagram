@@ -9,9 +9,14 @@ import {
 } from "@heroicons/react/outline";
 
 import { HomeIcon } from "@heroicons/react/solid";
+import { signIn, signOut, useSession } from "next-auth/react";
 // import Bubbles from "../public/images/bubbles.jpg";
 
 function Header() {
+  const { data: session } = useSession();
+
+  console.log(session);
+
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between max-w-6xl mx-4 xl:mx-auto">
@@ -49,23 +54,30 @@ function Header() {
         {/* Right */}
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="navBtn" />
-
-          <div className="relative navBtn">
-            <PaperAirplaneIcon className="navBtn rotate-45" />
-            <div className="bg-red-500 rounded-full flex items-center justify-center absolute -top-1.5 -right-2 text-xs w-5 h-5 animate-pulse text-white">3</div>
-          </div>
-
           <MenuIcon className="h-6 md:hidden min-w-max" />
 
-          <PlusCircleIcon className="navBtn" />
-          <UserGroupIcon className="navBtn" />
-          <HeartIcon className="navBtn" />
+          {session ? (
+            <>
+              <div className="relative navBtn">
+                <PaperAirplaneIcon className="navBtn rotate-45" />
+                <div className="bg-red-500 rounded-full flex items-center justify-center absolute -top-1.5 -right-2 text-xs w-5 h-5 animate-pulse text-white">
+                  3
+                </div>
+              </div>
+              <PlusCircleIcon className="navBtn" />
+              <UserGroupIcon className="navBtn" />
+              <HeartIcon className="navBtn" />
 
-          <img
-            src="static/bubbles.jpg"
-            alt="profile picture"
-            className="h-10 rounded-full cursor-pointer hover:border-green-500 hover:border-2 transition-all ease-in-out"
-          />
+              <img
+                onClick={signOut}
+                src={session?.user?.image}
+                alt="profile picture"
+                className="h-10 w-10 rounded-full cursor-pointer hover:border-green-500 hover:border-2 transition-all ease-in-out"
+              />
+            </>
+          ) : (
+            <button onClick={signIn}>Sign In</button>
+          )}
         </div>
       </div>
     </div>

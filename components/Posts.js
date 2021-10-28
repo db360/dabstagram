@@ -2,21 +2,21 @@ import Post from "./Post"
 
 const posts = [
     {
-        id: '123',
+        id: '1',
         username: 'sssarandonga',
         userImg: 'https://links.papareact.com/3ke',
         img: 'https://links.papareact.com/3ke',
         caption: 'Dab Web Developing'
     },
     {
-        id: '123',
+        id: '2',
         username: 'sssarandonga',
         userImg: 'https://links.papareact.com/3ke',
         img: 'https://links.papareact.com/3ke',
         caption: 'Dab Web Developing'
     },
     {
-        id: '123',
+        id: '3',
         username: 'sssarandonga',
         userImg: 'https://links.papareact.com/3ke',
         img: 'https://links.papareact.com/3ke',
