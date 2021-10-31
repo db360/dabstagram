@@ -107,7 +107,7 @@ function Post({ id, username, userImg, img, caption }) {
           <div className="flex space-x-4">
             {
               hasLiked ? (
-                <HeartIconFilled onClick={likePost} className="btn  text-red-500" />
+                <HeartIconFilled onClick={likePost} className="btn text-red-500" />
               ) : (
                 <HeartIcon onClick={likePost} className="btn" />
               )}
@@ -117,12 +117,17 @@ function Post({ id, username, userImg, img, caption }) {
           <BookmarkIcon className="btn" />
         </div>
       )}
+      <div className="p-2 truncate">
 
-      {/* caption */}
-      <p className="p-5 truncate">
+        {likes.length > 0 && (
+          <p className="font-bold mb-1">{likes.length} likes</p>
+        )}
+
         <span className="font-bold mr-1">{username} </span>
         {caption}
-      </p>
+      </div>
+
+      {/* caption */}
       {/* comments */}
       {comments.length > 0 && (
         <div className="ml-10 h-28 overflow-y-scroll scrollbar-thumb-green-500 scrollbar-thin">
