@@ -5,9 +5,9 @@ export default function SignIn({ providers }) {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen py-2 -mt-56 px-14 text-center">
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 px-14 text-center">
         <img className="w-80" src="/static/dabstagram.svg" alt="" />
-        <p className="font-xs italic mt-5">
+        <p className="font-xs italic mt-5 sm:text-[14px]">
           Not a real App, built for educational purpose.
         </p>
         <div className="mt-36">
